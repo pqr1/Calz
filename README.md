@@ -10,12 +10,13 @@
 
 # العربية
 
-تطبيق ويب عربي لحساب احتياجك اليومي من السعرات والماء، وتسجيل وجباتك وماكروزك مقابل هدفك، واختيار جدول تمارين حسب عدد أيام تدريبك. يعمل محلياً على جهازك بدون إنترنت وبدون أي مكتبات خارجية.
+تطبيق ويب يدعم العربية والإنجليزية لحساب احتياجك اليومي من السعرات والماء، وتسجيل وجباتك وماكروزك مقابل هدفك، واختيار جدول تمارين حسب عدد أيام تدريبك. يعمل محلياً على جهازك بدون إنترنت وبدون أي مكتبات خارجية.
 
 ## المميزات
 
 - **حساب السعرات والماء:** تدخل الجنس والعمر والطول والوزن ومستوى النشاط والهدف (تنزيل، تثبيت، زيادة)، فتحصل على السعرات اليومية والماء والبروتين والكربوهيدرات والدهون ومؤشر كتلة الجسم.
-- **تسجيل الماكروز:** سجّل فطورك وغداءك وعشاءك من قائمة أطعمة جاهزة (40 طعاماً بقيم لكل 100 جرام) أو أضف طعاماً مخصصاً بسعراته.
+- **اللغة:** بدّل بين العربية والإنجليزية من أي صفحة؛ يُحفظ اختيارك في المتصفح ويستمر عند التنقل بين الصفحات.
+- **تسجيل الماكروز:** سجّل فطورك وغداءك وعشاءك من مكتبة تضم أكثر من 180 طعاماً بقيم تقريبية لكل 100 جرام، أو أضف طعاماً مخصصاً وأدخل سعراته وماكروز الكمية التي أكلتها.
     - عداد ثابت في أعلى الصفحة مثل `508 / 2,358` مع شريط تقدم، ويتحول للأحمر عند تجاوز الهدف.
     - عدادات للبروتين والكربوهيدرات والدهون، وماكروز كل وجبة على حدة.
     - اختيار التاريخ لمراجعة أي يوم، وحذف أي عنصر بضغطة.
@@ -112,12 +113,13 @@ http://localhost:8000
 
 # English
 
-An Arabic-language web app that calculates your daily calorie and water needs, logs your meals and macros against a goal, and suggests weekly workout plans based on how many days you train. It runs locally with no internet connection and no third-party dependencies.
+A bilingual Arabic/English web app that calculates your daily calorie and water needs, logs your meals and macros against a goal, and suggests weekly workout plans based on how many days you train. It runs locally with no internet connection and no third-party dependencies.
 
 ## Features
 
 - **Calorie and water calculator:** enter sex, age, height, weight, activity level and goal (lose, maintain, gain) to get daily calories, water, protein, carbs, fat and BMI.
-- **Macro tracker:** log breakfast, lunch and dinner from a built-in food list (40 foods, values per 100 g) or add a custom food with its calories.
+- **Language:** switch between Arabic and English on any page. Your choice is saved in the browser and persists as you navigate.
+- **Macro tracker:** log breakfast, lunch and dinner from a built-in food list (more than 180 foods, approximate values per 100 g) or add a custom food with calories and macros for the serving.
     - A sticky counter at the top such as `508 / 2,358` with a progress bar that turns red when you exceed the goal.
     - Protein, carbs and fat counters, plus macros for each meal.
     - A date picker to review any day, and one-click removal of items.
