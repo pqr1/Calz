@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>جداول التمارين</title><link rel="stylesheet" href="style.css">
+<style>.days{display:flex;gap:8px;flex-wrap:wrap}.days button{flex:1;min-width:52px;background:transparent;color:var(--accent);border:1px solid var(--accent)}.days button.on{background:var(--accent);color:var(--accent-text)}
+.tag{display:inline-block;background:var(--soft);border-radius:8px;padding:1px 8px;font-size:.8rem;margin-inline-start:6px}
+.week li{display:block;padding:8px 0;border-bottom:1px solid var(--line)}.week .rest{color:var(--muted)}.week b{display:inline-block;min-width:68px}
+details{margin-top:6px}summary{cursor:pointer;color:var(--accent)}.ex{display:flex;justify-content:space-between;font-size:.92rem;padding:3px 0}.exercise-link{text-decoration:none}.exercise-link:hover{text-decoration:underline}</style></head>
+<body><div class="wrap">
+  <div class="nav"><a href="index.html">← الرئيسية</a></div>
+  <h1>جداول التمارين</h1>
+  <p class="sub">كم يوم تقدر تتمرن في الأسبوع؟</p>
+  <div class="card"><div class="days" id="days"></div><div class="msg" id="msg" role="alert"></div></div>
+  <div id="plans"></div>
+  <div class="note">الراحة بين المجموعات من 60 إلى 120 ثانية. ابدأ بتسخين خفيف، وزد الأوزان تدريجياً مع ثبات الأداء. جداول عامة وليست بديلاً عن مدرب أو طبيب، خصوصاً مع وجود إصابة.</div>
+</div>
+<script src="app.js"></script>
+<script>
+const box = $("days");
+[2, 3, 4, 5, 6].forEach((n) => box.insertAdjacentHTML("beforeend", `<button data-n="${n}">${n} أيام</button>`));
+box.onclick = async (e) => {
+  const n = e.target.dataset.n;
+  if (!n) return;
+  [...box.children].forEach((b) => b.classList.toggle("on", b === e.target));
+  try {
+    const plans = await api("/api/plans?days=" + n);
+    $("msg").textContent = "";
+    $("plans").innerHTML = plans.map((p) => `<div class="card"><h2>${esc(p.name)}<span class="tag">${esc(p.level)}</span></h2><p class="sub" style="margin:6px 0 0">${esc(p.desc)}</p>
+      <ul class="week">${p.week.map((d) => d.title
+        ? `<li><b>${d.day}</b> ${esc(d.title)}<details><summary>التمارين</summary>${d.exercises.map((x) => `<div class="ex"><a class="exercise-link" href="${esc(x.video_url)}" target="_blank" rel="noopener noreferrer" title="شاهد شرح التمرين على يوتيوب">${esc(x.name)}</a><span dir="ltr">${esc(x.sets)}</span></div>`).join("")}</details></li>`
+        : `<li class="rest"><b>${d.day}</b> راحة</li>`).join("")}</ul></div>`).join("");
+  } catch (err) { $("msg").textContent = err.message; }
+};
+</script></body></html>
